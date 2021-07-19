@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 app.use(router);
 app.use(cors());
 
-dotenv.config({path: './config/config.env'});
+dotenv.config({ path: './config/config.env' });
 
 mongoose.connect(process.env.DataBase, {
     useNewUrlParser: true,
@@ -26,13 +26,21 @@ db.on("error", (err) => {
 });
 
 db.on("connected", (err, res) => {
-    if (err){
+    if (err) {
         console.log("Error: " + err);
     }
-    else{
+    else {
         console.log("Mongoose is connected");
     }
 });
+
+if (process.env.NODE_ENV == "production") {
+    // set static folder
+    app.use(express.static("client/build"));
+    app.get("*", (req, res) => {
+        res.sendFile(path.resolve("./", "client", "build", "index.html"));
+    });
+}
 
 app.listen(process.env.PORT, () => console.log(`Server running on ${process.env.PORT}`));
 
