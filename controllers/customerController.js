@@ -3,22 +3,26 @@ const customers = require('../model/customerSchema');
 const csvtojson = require('csvtojson');
 
 exports.exportCustomers = (req, res) => {
-    var config = {
-        method: 'get',
-        url: `https://${process.env.API_key}:${process.env.API_password}@${process.env.STORE_NAME}/admin/api/2021-04/customers.json`,
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    };
+    // var config = {
+    //     method: 'get',
+    //     url: `https://${process.env.API_key}:${process.env.API_password}@${process.env.STORE_NAME}/admin/api/2021-04/customers.json`,
+    //     headers: {
+    //         'Content-Type': 'application/json'
+    //     }
+    // };
 
-    axios(config)
-        .then(function (response) {
-            var data = response.data.customers;
-            res.json({ Data: data })
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
+    // axios(config)
+    //     .then(function (response) {
+    //         var data = response.data.customers;
+    //         res.json({ Data: data })
+    //     })
+    //     .catch(function (error) {
+    //         console.log(error);
+    //     });
+
+    const customer = await customers.find({}, { _id: 0, "addresses._id": 0 });
+
+    res.json({Data: data})
 }
 
 exports.uploadcustomercsv = (req, res) => {

@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 app.use(router);
 app.use(cors());
 
-dotenv.config({ path: '.env' });
+dotenv.config({ path: 'config.env' });
 
 mongoose.connect(process.env.DataBase, {
     useNewUrlParser: true,
