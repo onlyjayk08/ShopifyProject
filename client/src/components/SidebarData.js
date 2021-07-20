@@ -28,17 +28,17 @@ export const SidebarData = [
         icon: <IoIcons.IoMdPeople/>,
         cName: 'nav-text'
     },
-    {
-        title: 'Sign in',
-        path: '/signin',
-        icon: <AiIcons.AiFillHome/>,
-        cName: 'nav-text'
-    },
-    {
-        title: 'Sign up',
-        path: '/signup',
-        icon: <AiIcons.AiFillHome/>,
-        cName: 'nav-text'
-    },
+    // {
+    //     title: 'Sign in',
+    //     path: '/signin',
+    //     icon: <AiIcons.AiFillHome/>,
+    //     cName: 'nav-text'
+    // },
+    // {
+    //     title: 'Sign up',
+    //     path: '/signup',
+    //     icon: <AiIcons.AiFillHome/>,
+    //     cName: 'nav-text'
+    // },
     
 ]
