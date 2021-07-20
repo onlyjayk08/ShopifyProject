@@ -2,7 +2,7 @@ const axios = require('axios');
 const customers = require('../model/customerSchema');
 const csvtojson = require('csvtojson');
 
-exports.exportCustomers = (req, res) => {
+exports.exportCustomers = async (req, res) => {
     // var config = {
     //     method: 'get',
     //     url: `https://${process.env.API_key}:${process.env.API_password}@${process.env.STORE_NAME}/admin/api/2021-04/customers.json`,
