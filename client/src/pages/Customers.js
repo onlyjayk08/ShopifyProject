@@ -33,6 +33,24 @@ function Customers() {
         }
     ];
 
+    async function deleteAllCustomers(e) {
+        e.preventDefault();
+        try {
+            await axios.delete('/api/delete/customers');
+            setTimeout(async function () {
+                await axios.get("/api/export/customers").then((response) => {
+                    console.log(response);
+                    setstatus(response.data)
+                })
+            }, 5000);
+
+        }
+        catch (err) {
+            console.log(err);
+        }
+
+    }
+
     return (
         <div className="customers">
             <h1>Customers</h1>
@@ -42,6 +60,7 @@ function Customers() {
             <Link to='/addcustomerscsv' >
                 <button>Add Customer by csv</button>
             </Link>
+            <button onClick={deleteAllCustomers}>Delete all Customers</button>
             <BootstrapTable keyField='id' data={status == null ? [] : status.Data} columns={columns} />
         </div>
     )

@@ -13,15 +13,7 @@ function Products() {
       setstatus(response.data)
 
     })
-  },[])
-
-  // const getproducts = () => {
-  //   axios.get("/api/export/product").then((response) => {
-  //     console.log(response);
-  //     setstatus(response.data)
-
-  //   })
-  // }
+  },[]);
 
   const columns = [{
     dataField: 'id',
@@ -43,8 +35,6 @@ function Products() {
       <Link to='/addproductscsv' >
         <button>Add Products by csv</button>
       </Link>
-      {/* <button><Route exact path="/products" component={Products}></Route></button> */}
-      {/* <button onClick = {getproducts}>Get Products</button> */}
       <BootstrapTable keyField='id' data={status == null ? [] : status.Data} columns={columns} />
     </div>
   )

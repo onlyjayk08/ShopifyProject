@@ -1,42 +1,10 @@
-const users = require('../model/userSchema');
 const products = require('../model/productSchema');
 const axios = require('axios');
 const csvtojson = require('csvtojson');
 
-exports.exportProduct = (req, res) => {
-    var config = {
-        method: 'get',
-        url: `https://${process.env.API_key}:${process.env.API_password}@${process.env.STORE_NAME}/admin/api/2021-04/products.json?limit=250`,
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    };
-
-    axios(config)
-        .then(function (response) {
-            var data = response.data.products;
-            res.json({ Data: data })
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
-}
-
-exports.register = (req, res) => {
-    let user = new users();
-    user.username = req.body.username;
-    user.password = req.body.password;
-    console.log(user);
-
-    user.save((err) => {
-        if (err) {
-            console.log(err);
-            return
-        }
-        else {
-            res.send("User has been added")
-        }
-    })
+exports.exportProduct = async (req, res) => {
+    const product = await products.find({}, { _id: 0, custom_collection: 0 });
+    res.json({ Data: product })
 }
 
 exports.addProduct = async (req, res) => {
@@ -99,6 +67,44 @@ exports.customCollection = async (req, res) => {
     const collection = await products.find({});
     await sendcustomCollection(collection, 0);
     res.send(`custom collection being added`)
+}
+
+exports.deleteallproduct = async (req, res) => {
+    var config = {
+        method: 'get',
+        url: `https://${process.env.API_key}:${process.env.API_password}@${process.env.STORE_NAME}/admin/api/2021-04/products.json`,
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }
+    await axios(config).then( async (response) => {
+        var data = response.data.products;
+        await deleteAllProducts(data, 0);
+    })
+    res.send("Products being deleted");
+}
+
+async function deleteAllProducts(data, length) {
+
+    if(data[length] == null){
+        return
+    }
+    var conimg = {
+        method: 'delete',
+        url: `https://${process.env.API_key}:${process.env.API_password}@${process.env.STORE_NAME}/admin/api/2021-04/products/${data[length].id}.json`,
+
+    };
+    await axios(conimg);
+    console.log(`product ${data[length].title} deleted`);
+    await products.findOneAndRemove({title: `${data[length].title}`}, (error, deletedRecord) =>{
+        if(!error){
+            console.log(`${data[length].title} has been removed from database`)
+        }
+        else{
+            console.log(error);
+        }
+    });
+    deleteAllProducts(data, length + 1);
 }
 
 function uploadfile(file) {

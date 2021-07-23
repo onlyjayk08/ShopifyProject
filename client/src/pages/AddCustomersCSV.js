@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import Progress from '../components/Progress';
 
 function AddCustomersCSV() {
     const [file, setFile] = useState('');
@@ -69,7 +70,11 @@ function AddCustomersCSV() {
                 <input type="submit" />
             </form>
             <button onClick={uploadToDatabase}>upload to database</button><br />
-            <button onClick={uploadToShopify}> upload to shopify</button>
+            <button onClick={uploadToShopify}> upload to shopify</button><br />
+            <div className="progress">
+                <Progress />
+            </div>
+
         </div>
     )
 }
