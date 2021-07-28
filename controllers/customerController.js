@@ -67,6 +67,13 @@ exports.deleteallcustomers = async (req, res) => {
 }
 
 exports.setProgress = (req, res) => {
+    if (cache.get("progress") == 100) {
+        res.json({
+            progress: cache.get("progress")
+        })
+        cache.put("progress", 0);
+        return
+    }
     cache.get("progress");
     res.json({
         progress: cache.get("progress")
@@ -130,15 +137,15 @@ async function sendcustomerdata(data, length, res) {
             };
             await axios(config)
             console.log("customer " + data[length].email + " is added");
-            prog = 100/data.length;
-            if(prog*(length+1) < 100){
-                cache.put("progress", prog*(length+1));
+            prog = 100 / data.length;
+            if (prog * (length + 1) < 100) {
+                cache.put("progress", prog * (length + 1));
             }
-            else if (prog*(length+1) == 100){
-                
-                cache.put("progress", prog*(length+1) - 1);
+            else if (prog * (length + 1) == 100) {
+
+                cache.put("progress", prog * (length + 1) - 1);
             }
-            
+
             console.log("Progress: " + cache.get("progress"));
             await customers.findOneAndUpdate({ email: data[length].email }, { $set: { state: "complete" } });
         }
@@ -168,7 +175,5 @@ async function sendcustomerdata(data, length, res) {
                 }
             })
         }, 2000);
-
-
     }
 }

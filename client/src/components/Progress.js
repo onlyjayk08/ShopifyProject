@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import LinearProgress from '@material-ui/core/LinearProgress';
@@ -37,13 +37,20 @@ const useStyles = makeStyles({
 
 export default function LinearWithValueLabel() {
     const classes = useStyles();
-    const [progress, setProgress] = React.useState(10);
+    const [progress, setProgress] = useState(0);
 
     React.useEffect(() => {
-        const timer = setInterval( async () => {
+        const timer = setInterval(async () => {
             try {
                 let res = await axios.get('/api/customer/progress');
-                setProgress((prevProgress) => (prevProgress == null ? 0 : res.data.progress))
+                setProgress((prevProgress) => (prevProgress == null ? 0 : res.data.progress));
+                if (res.data.progress == 100) {
+                    // setTimeout(()=>{
+                        //setProgress(0);
+                        clearInterval(timer);
+                    // }, 5000) 
+                }
+
             }
             catch (err) {
                 console.log(err);

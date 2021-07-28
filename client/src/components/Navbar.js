@@ -38,27 +38,29 @@ function Navbar() {
                     <FaIcons.FaBars onClick={showSidebar}/>
                 </Link>
             </div> */}
-            <IconContext.Provider value={{ color: '#fff' }}>
-                <nav className="NavbarItems">
+            {/* <IconContext.Provider value={{ color: '#1a83ff' }}> */}
+            <nav className="NavbarItems">
+                <Link to="/">
                     <h1 className="navbar-logo">Shopify Application</h1>
-                    <div className="menu-icon">
-                        {navbar(sidebar)}
-                    </div>
-                    <ul className={sidebar ? 'nav-menu active' : 'nav-menu'}>
-                        {SidebarData.map((item, index) => {
-                            return (
-                                <li key={index} className={item.cName}>
-                                    <Link to={item.path}>
-                                        {item.icon}
-                                        <span>{item.title}</span>
-                                    </Link>
+                </Link>
+                <div className="menu-icon">
+                    {navbar(sidebar)}
+                </div>
+                <ul className={sidebar ? 'nav-menu active' : 'nav-menu'}>
+                    {SidebarData.map((item, index) => {
+                        return (
+                            <li key={index} className={item.cName}>
+                                <Link to={item.path}>
+                                    {item.icon}
+                                    <span onClick={showSidebar}>{item.title}</span>
+                                </Link>
 
-                                </li>
-                            )
-                        })}
-                    </ul>
-                </nav>
-            </IconContext.Provider>
+                            </li>
+                        )
+                    })}
+                </ul>
+            </nav>
+            {/* </IconContext.Provider> */}
         </>
 
     )

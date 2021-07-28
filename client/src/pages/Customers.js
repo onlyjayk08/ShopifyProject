@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import axios from 'axios';
 import BootstrapTable from 'react-bootstrap-table-next';
 import { Link } from 'react-router-dom';
+import './Customers.css'
+import Formcsv from '../components/Formcsv'
 
 function Customers() {
     const [status, setstatus] = useState(null);
@@ -43,26 +45,19 @@ function Customers() {
                     setstatus(response.data)
                 })
             }, 5000);
-
         }
         catch (err) {
             console.log(err);
         }
-
     }
 
     return (
         <div className="customers">
             <h1>Customers</h1>
-            <Link to='/addcustomer' >
-                <button>Add Customer</button>
-            </Link><br />
-            <Link to='/addcustomerscsv' >
-                <button>Add Customer by csv</button>
-            </Link>
-            <button onClick={deleteAllCustomers}>Delete all Customers</button>
+            <Formcsv data={"customers"} />
+            <button onClick={deleteAllCustomers} className="deleteAllCustomers">Delete all Customers</button>
             <BootstrapTable keyField='id' data={status == null ? [] : status.Data} columns={columns} />
-        </div>
+        </div >
     )
 }
 
