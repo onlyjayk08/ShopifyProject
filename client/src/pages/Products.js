@@ -73,7 +73,7 @@ function Products() {
               <React.Fragment>
                 <div className="col-md-3 card shadow">
                   <div className="grid">
-                    <table>
+                    {/* <table>
                       <tr>
                         <td>
                           <span>
@@ -90,20 +90,17 @@ function Products() {
                           <span>
                             Status: {info.status}
                           </span><br />
-                          {/* <span>
-                            Tags: {info.tags}
-                          </span><br/> */}
                           <span>
                             Vendor: {info.vendor}
                           </span>
                         </td>
                       </tr>
-                    </table>
-                    {/* <span>
+                    </table> */}
+                    <span>
                       <img src={info.image.src} alt={info.title} />
-                    </span><br /> */}
+                    </span><br />
 
-                    {/* <span>
+                    <span>
                       Title: {info.title}
                     </span><br />
                     <span>
@@ -111,7 +108,10 @@ function Products() {
                     </span><br />
                     <span>
                       Status: {info.status}
-                    </span> */}
+                    </span>
+                    <span>
+                      Vendor: {info.vendor}
+                    </span>
                   </div>
                 </div>
               </React.Fragment>
