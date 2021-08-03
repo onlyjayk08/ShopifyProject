@@ -1,0 +1,44 @@
+img{
+    height: 150px;
+    width: 150px;
+}
+
+.grid{
+    border: solid 1px black;
+}
+
+.table-view, .grid-view{
+    cursor: pointer;
+}
+
+.table-view-active, .grid-view-active{
+    text-decoration: underline;
+    color: red;
+    cursor: pointer;
+}
+
+.table-view:hover, .grid-view:hover{
+    cursor: pointer;
+    text-decoration: underline;
+    color: red;
+    cursor: pointer;
+}
+
+.deleteAllProducts{
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    text-align: center;
+    padding: 8px 20px;
+    font-size: 16px;
+    float: right;  
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border: 2px solid #4CAF50;
+}
+
+.deleteAllProducts:hover{
+    background-color: white;
+    color: #4CAF50;
+    border: 2px solid #4CAF50;
+}

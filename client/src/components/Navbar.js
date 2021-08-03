@@ -32,13 +32,6 @@ function Navbar() {
 
     return (
         <>
-            {/* <IconContext.Provider value={{color: '#fff'}}>
-            <div className="navbar">
-                <Link to="#" className='menu-bars'>
-                    <FaIcons.FaBars onClick={showSidebar}/>
-                </Link>
-            </div> */}
-            {/* <IconContext.Provider value={{ color: '#1a83ff' }}> */}
             <nav className="NavbarItems">
                 <Link to="/">
                     <h1 className="navbar-logo">Shopify Application</h1>

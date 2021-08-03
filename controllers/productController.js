@@ -8,46 +8,6 @@ exports.exportProduct = async (req, res) => {
     res.json({ Data: product })
 }
 
-exports.addProduct = async (req, res) => {
-    let productinfo = req.body.productdata;
-    console.log(productinfo);
-    var config = {
-        method: 'post',
-        url: `https://${process.env.API_key}:${process.env.API_password}@${process.env.STORE_NAME}/admin/api/2021-04/products.json`,
-        data: {
-            "product": productinfo
-        }
-    }
-    await axios(config)
-
-    console.log("product " + productinfo.title + " is added");
-    res.send(`${productinfo.title} has been added`);
-}
-
-exports.uploadcsv = (req, res) => {
-    if (req.files === null) {
-        return res.status(400).json({ message: 'No File was Uploaded' });
-    }
-    const file = req.files.file;
-    file.mv(`./uploads/${file.name}`, (err) => {
-        if (err) {
-            console.error(err);
-            return res.status(500).send(err);
-        }
-        res.json({ fileName: file.name, filePath: `/uploads/${file.name}` })
-    })
-}
-
-exports.uploadtodatabase = async (req, res) => {
-    if (req.files === null) {
-        return res.status(400).json({ message: 'No File was Uploaded' });
-    }
-    const file = req.files.file;
-    await uploadfile(file);
-    await csvtodatabse(file);
-    res.send("products sent to database");
-}
-
 exports.importdata = async (req, res) => {
     if (req.files === null) {
         return res.status(400).json({ message: 'No File was Uploaded' });

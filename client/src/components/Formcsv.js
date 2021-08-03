@@ -6,9 +6,16 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Input from '@material-ui/core/Input';
+import { makeStyles } from '@material-ui/core/styles';
 import axios from 'axios';
 import Progress from '../components/Progress';
 import './Fontcsv.css'
+
+const useStyles = makeStyles({
+    DialogTitle: {
+      fontSize: 24,
+    },
+  });
 
 export default function FormDialog(props) {
     const [open, setOpen] = useState(false);
@@ -63,17 +70,22 @@ export default function FormDialog(props) {
 
     }
 
+    const classes = useStyles();
+
     return (
         <div >
             <button className="importcsv" onClick={handleClickOpen}> import {props.data}</button>
+            {state && <Progress />}
             <Dialog
                 open={open}
                 onClose={handleClose}
                 aria-labelledby="dial-csv"
                 fullWidth={fullWidth}
                 maxWidth="lg"
+                disableTypography
             >
-                <DialogTitle id="formtTitle">CSV file Upload</DialogTitle>
+                
+                <DialogTitle className={classes.root} >CSV file Upload</DialogTitle>
                 <DialogContent>
                     <DialogContentText>
                         Upload a csv file
@@ -85,6 +97,7 @@ export default function FormDialog(props) {
                         id="name"
                         label="CSV File"
                         type="file"
+                        accept=".csv"
                     />
                 </DialogContent>
                 <DialogActions>
@@ -103,14 +116,14 @@ export default function FormDialog(props) {
                         : ""}
                     {props.data === "products" ?
                         <Button onClick={() => {
-                            // handleClose();
+                            handleClose();
                             uploadToShopifyProducts();
                         }} color="primary">
                             Upload Products
                         </Button>
                         : ""
                     }
-                    {state && <Progress />}
+                   
                 </DialogActions>
             </Dialog>
         </div>

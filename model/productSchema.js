@@ -9,6 +9,7 @@ var productSchema = new mongoose.Schema({
     image: {
         src: {type: String}
     },
+    status: {type: String},
     state: {type: String, default: "Pending"},
     variant: {
         option1: {type: String},

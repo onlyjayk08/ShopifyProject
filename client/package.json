@@ -2,8 +2,8 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
-  "proxy1":"http://localhost:3001",
-  "proxy": "https://shopify-react-node-js.herokuapp.com:3001",
+  "proxy":"http://localhost:3001",
+  "proxy1": "https://shopify-react-node-js.herokuapp.com:3001",
   "dependencies": {    
     "@testing-library/jest-dom": "^5.14.1",
     "@material-ui/core": "^4.12.2",
