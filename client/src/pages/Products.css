@@ -3,9 +3,9 @@ img{
     width: 150px;
 }
 
-.grid{
+/* .grid{
     border: solid 1px black;
-}
+} */
 
 .table-view, .grid-view{
     cursor: pointer;

@@ -4,7 +4,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 2rem;
+    font-size: 1rem;
     box-shadow: 5px 10px 8px #888888;
 }
 
@@ -12,19 +12,19 @@
     display: flex;
     color: #fff;
     justify-content: start;
-    margin-left: 20px;
+    margin-left: 15px;
     cursor: pointer;
 }
 
 .nav-menu{
     display: grid;
-    grid-template-columns: repeat(6,auto);
+    grid-template-columns: repeat(4,auto);
     grid-gap: 10px;
     list-style: none;
     text-align: center;
     width: 70vw;
     justify-content: end;
-    margin-right: 2rem;
+    margin-right: 2.5rem;
 }
 
 .nav-text a {
@@ -91,7 +91,8 @@ span {
         position: absolute;
         top: 0;
         left: 0;
-        transform: translate(25%, 10%);
+        transform: translate(10%, 10%);
+        font-size: 2.5rem;
     }
 
     .menu-bars{
@@ -99,7 +100,7 @@ span {
         position: absolute;
         top: 0;
         right: 0;
-        transform: translate(-100%, 60%);
+        transform: translate(-50%, 5%);
         font-size: 2.5rem;
         cursor: pointer;
     }   
