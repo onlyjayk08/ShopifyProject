@@ -8,6 +8,7 @@ import axios from 'axios';
 
 function LinearProgressWithLabel(props) {
     return (
+        <>
         <Box display="flex" alignItems="center">
             <Box width="100%" mr={1}>
                 <LinearProgress variant="determinate" {...props} />
@@ -18,6 +19,7 @@ function LinearProgressWithLabel(props) {
                 )}%`}</Typography>
             </Box>
         </Box>
+        </>
     );
 }
 
@@ -45,10 +47,17 @@ export default function LinearWithValueLabel() {
                 let res = await axios.get('/api/customer/progress');
                 setProgress((prevProgress) => (prevProgress == null ? 0 : res.data.progress));
                 if (res.data.progress == 100) {
-                    // setTimeout(()=>{
-                        //setProgress(0);
-                        clearInterval(timer);
-                    // }, 5000) 
+                    // {
+                    //     props.data === "products" ?
+                    //     ""
+                    //     : ""
+                    // }
+                    // {
+                    //     props.data === "customers" ?
+                    //     ""
+                    //     : ""
+                    // }
+                    clearInterval(timer);
                 }
 
             }
@@ -63,7 +72,7 @@ export default function LinearWithValueLabel() {
 
     return (
         <div className={classes.root}>
-            <LinearProgressWithLabel value={progress} />
+            <LinearProgressWithLabel value={progress} data={this.props.data} />
         </div>
     );
 }

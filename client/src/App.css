@@ -4,10 +4,11 @@
   padding: 0;
 }
 
-.home, .reports, .products{
+.home, .customers, .products{
   /* display: flex; */
-  height: 90px;
+  margin-top: 15px;
+  /* height: 100px; */
   align-items: center;
   justify-content: center;
-  font-size: 2rem;
+  font-size: 1.5rem;
 }

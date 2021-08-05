@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { useState } from 'react';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -13,9 +13,9 @@ import './Fontcsv.css'
 
 const useStyles = makeStyles({
     DialogTitle: {
-      fontSize: 24,
+        fontSize: 24,
     },
-  });
+});
 
 export default function FormDialog(props) {
     const [open, setOpen] = useState(false);
@@ -75,7 +75,16 @@ export default function FormDialog(props) {
     return (
         <div >
             <button className="importcsv" onClick={handleClickOpen}> import {props.data}</button>
-            {state && <Progress />}
+            {props.data === "products" ?
+                state && <Progress data={"products"} />
+                : ""
+            }
+            {props.data === "customers" ?
+                state && <Progress data={"customers"} />
+                : ""
+            }
+
+
             <Dialog
                 open={open}
                 onClose={handleClose}
@@ -84,7 +93,7 @@ export default function FormDialog(props) {
                 maxWidth="lg"
                 disableTypography
             >
-                
+
                 <DialogTitle className={classes.root} >CSV file Upload</DialogTitle>
                 <DialogContent>
                     <DialogContentText>
@@ -108,7 +117,7 @@ export default function FormDialog(props) {
                     </Button>
                     {props.data === "customers" ?
                         <Button onClick={() => {
-                            // handleClose();
+                            handleClose();
                             uploadToShopifyCustomers();
                         }} color="primary">
                             Upload Customers
@@ -123,7 +132,7 @@ export default function FormDialog(props) {
                         </Button>
                         : ""
                     }
-                   
+
                 </DialogActions>
             </Dialog>
         </div>

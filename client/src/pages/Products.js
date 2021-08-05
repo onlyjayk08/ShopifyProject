@@ -6,10 +6,8 @@ import Formcsv from '../components/Formcsv'
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
 
@@ -94,36 +92,12 @@ function Products() {
               // console.log(info)
               return (
                 <React.Fragment>
-                  <div className="col-md-3 shadow">
-                    {/* <table>
-                      <tr>
-                        <td>
-                          <span>
-                            <img src={info.image.src} alt={info.title} />
-                          </span>
-                        </td>
-                        <td>
-                          <span>
-                            Title: {info.title}
-                          </span><br />
-                          <span>
-                            Price: ${info.variant.price}
-                          </span><br />
-                          <span>
-                            Status: {info.status}
-                          </span><br />
-                          <span>
-                            Vendor: {info.vendor}
-                          </span>
-                        </td>
-                      </tr>
-                    </table> */}
+                  <div className="col-md-3 mb-5 me-4 shadow">
                     <Card className={classes.root}>
                       <CardActionArea>
                         <CardMedia
                           className={classes.media}
                           image={info.image.src}
-                          // image="/static/images/cards/contemplative-reptile.jpg"
                           title="Contemplative Reptile"
                         />
                         <CardContent>
@@ -139,30 +113,7 @@ function Products() {
                           </Typography>
                         </CardContent>
                       </CardActionArea>
-                      <CardActions>
-                        <Button size="small" color="primary">
-                          Share
-                        </Button>
-                        <Button size="small" color="primary">
-                          Learn More
-                        </Button>
-                      </CardActions>
                     </Card>
-                    {/* <span>
-                    <img src={info.image.src} alt={info.title} />
-                  </span><br />
-                  <span>
-                    Title: {info.title}
-                  </span><br />
-                  <span>
-                    Price: ${info.variant.price}
-                  </span><br />
-                  <span>
-                    Status: {info.status}
-                  </span><br />
-                  <span>
-                    Vendor: {info.vendor}
-                  </span> */}
                   </div>
                 </React.Fragment>
               )
@@ -170,15 +121,6 @@ function Products() {
           </div>
         </div>
       }
-      {/* <div class="card" style="width: 18rem;">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="card-link">Card link</a>
-          <a href="#" class="card-link">Another link</a>
-        </div>
-      </div> */}
     </div>
   )
 }

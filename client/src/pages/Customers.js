@@ -1,12 +1,17 @@
 import React, { useState } from 'react'
 import axios from 'axios';
 import BootstrapTable from 'react-bootstrap-table-next';
-import { Link } from 'react-router-dom';
 import './Customers.css'
 import Formcsv from '../components/Formcsv'
 
 function Customers() {
     const [status, setstatus] = useState(null);
+    const [view, setView] = useState(true);
+
+    const showView = () => {
+        setView(!view);
+        console.log(view);
+    }
 
     React.useEffect(() => {
         axios.get("/api/export/customers").then((response) => {
@@ -54,9 +59,15 @@ function Customers() {
     return (
         <div className="customers">
             <h1>Customers</h1>
-            <Formcsv data={"customers"} />
             <button onClick={deleteAllCustomers} className="deleteAllCustomers">Delete all Customers</button>
-            <BootstrapTable keyField='id' data={status == null ? [] : status.Data} columns={columns} />
+            <Formcsv data={"customers"} />
+
+            <span className={view ? "table-view-active" : "table-view"} onClick={showView}>Table</span>
+            <span className={view ? "grid-view" : "grid-view-active"} onClick={showView}>Grid</span>
+
+            {view ? <BootstrapTable keyField='id' data={status == null ? [] : status.Data} columns={columns} /> :
+                ""
+            }
         </div >
     )
 }
