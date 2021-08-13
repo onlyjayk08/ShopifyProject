@@ -114,7 +114,7 @@ export default function FormDialog(props) {
                         handleClose();
                     }} color="primary">
                         Cancel
-                    </Button>
+                    </Button> 
                     {props.data === "customers" ?
                         <Button onClick={() => {
                             handleClose();
@@ -130,7 +130,7 @@ export default function FormDialog(props) {
                         }} color="primary">
                             Upload Products
                         </Button>
-                        : ""
+                        : "" 
                     }
 
                 </DialogActions>

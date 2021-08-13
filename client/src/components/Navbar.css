@@ -6,14 +6,15 @@
     align-items: center;
     font-size: 1rem;
     box-shadow: 5px 10px 8px #888888;
-    /* position: fixed;
+    position: fixed;
     top: 0;
     left: 0;
-    width: 100%; */
+    width: 100%;
 }
 
 .navbar-logo{
-    display: flex;
+    display: flix;
+    white-space: nowrap;
     color: #fff;
     justify-content: start;
     margin-left: 15px;
